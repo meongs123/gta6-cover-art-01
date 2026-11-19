@@ -48,10 +48,21 @@ async function shot1() {
 }
 
 async function shot2(emblemImg) {
-  // Hero Key Art full-bleed: boulevard.jpg (real sunset portrait) in the hero.
-  const photo = await loadPhoto('samples/boulevard.jpg');
+  // Hero Key Art full-bleed: couple-neon.jpg (free-stock couple photo,
+  // Pexels License, photographer Toàn Văn — Vietnamese couple, NOT the
+  // brief's Japanese couple; demo input only) in the hero.
+  // Hero crop, worked out from the photo's own geometry (1600x2400):
+  // the orange "Baozi" neon sign spans y ~11-27% of the photo. Key Art
+  // hero panel ratio is 0.882, so at zoom 1.15 the cover crop is
+  // 1391x1577 px and its top edge can sit at y=823/2400 (34%) — the sign
+  // is fully above the crop. Anchor (0.55, 0.72) centres the two faces;
+  // woman's chin lands ~60% of the panel, man's ~54% — both clear of
+  // the title band (panel ends at y 67% of the cover).
+  const photo = await loadPhoto('samples/couple-neon.jpg');
   const canvas = makeCanvas('4:5', false);
-  const assignments = assignPhotos([photo], panelFillOrder('keyart', '4:5'));
+  const assignments = new Map([
+    ['E', { photo, zoom: 1.15, anchor: { x: 0.55, y: 0.72 } }],
+  ]);
   await renderCover(canvas, {
     layout: 'keyart',
     grade: 'sunset',
@@ -65,13 +76,23 @@ async function shot2(emblemImg) {
 }
 
 async function shot3(emblemImg) {
-  // 5-panel grid, Neon Nights, group photo in the hero + pier in the car panel.
-  const group = await loadPhoto('test-photos/test-group.jpg');
-  const pier = await loadPhoto('samples/pier.jpg');
+  // 5-panel grid, Neon Nights, multi-photo: couple-neon.jpg in the hero
+  // (same couple as shot 2, new layout + new grade) + couple-kyoto.jpg
+  // (rainy Kyoto night, photographer Michael Dupuis, Pexels License —
+  // genuinely Japan, faces small) as a vignette in the car panel (H).
+  // Grid hero ratio is 0.603, so at zoom 1.5 the cover crop is 965x1600 px
+  // with its top edge at y=800/2400 (33%) — the "Baozi" sign is fully
+  // above the crop again; both faces stay in frame, woman's chin ~62%
+  // of the panel (cover y ~43%, clear of the title band).
+  // Kyoto vignette: panel H ratio is 1.10 (landscape), so the crop is the
+  // full 1600 px wide x 1455 px tall; anchor (0.65, 0.50) centres the
+  // couple under the umbrella (faces ~y 37-40% of the panel).
+  const neon = await loadPhoto('samples/couple-neon.jpg');
+  const kyoto = await loadPhoto('samples/couple-kyoto.jpg');
   const canvas = makeCanvas('4:5', false);
   const assignments = new Map([
-    ['E', { photo: group, zoom: 1 }],
-    ['H', { photo: pier, zoom: 1 }],
+    ['E', { photo: neon, zoom: 1.5, anchor: { x: 0.56, y: 0.75 } }],
+    ['H', { photo: kyoto, zoom: 1, anchor: { x: 0.65, y: 0.5 } }],
   ]);
   await renderCover(canvas, {
     layout: 'grid',

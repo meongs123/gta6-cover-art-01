@@ -19,6 +19,17 @@ screenshots. Validation (5 adversarial photos × 3 sizes, thumbnail
 readability, export timings) is in the build log
 `~/workspace/makefun/cover-art-concept/build-log.md`.
 
+Round 3 (20 Nov 2026): the hero is now a real couple photo — a free-stock
+couple photo under the Pexels License (`app/samples/couple-neon.jpg`,
+photographer Toàn Văn) with a crop that excludes the "Baozi" neon sign, and
+a rainy-Kyoto couple photo (`app/samples/couple-kyoto.jpg`, photographer
+Michael Dupuis) as a vignette in the 5-panel grid shot. Honest note: the
+neon couple is Vietnamese, not the Japanese couple from the brief, and the
+Kyoto couple's faces are small in frame — both are demo input to the app,
+not a claim that the brief's couple was photographed. No free-stock photo
+matching the full brief (young Japanese couple, big faces, sunset) exists;
+the procedural demo-art hero remains the fallback.
+
 ## How it works
 
 - Load your own photo(s) from your machine (up to 6), or use the built-in

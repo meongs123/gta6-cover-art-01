@@ -396,6 +396,8 @@ async function init() {
   });
   $('sample-pier').addEventListener('click', () => addPhotoFromUrl('samples/pier.jpg'));
   $('sample-boulevard').addEventListener('click', () => addPhotoFromUrl('samples/boulevard.jpg'));
+  $('sample-couple').addEventListener('click', () => addPhotoFromUrl('samples/couple-neon.jpg'));
+  $('sample-kyoto').addEventListener('click', () => addPhotoFromUrl('samples/couple-kyoto.jpg'));
   $('zoom-slider').addEventListener('input', (e) => {
     const asg = state.assignments.get(state.selectedPanel);
     if (!asg) return;

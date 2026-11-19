@@ -79,20 +79,22 @@ async function shot3(emblemImg) {
   // 5-panel grid, Neon Nights, multi-photo: couple-neon.jpg in the hero
   // (same couple as shot 2, new layout + new grade) + couple-kyoto.jpg
   // (rainy Kyoto night, photographer Michael Dupuis, Pexels License —
-  // genuinely Japan, faces small) as a vignette in the car panel (H).
-  // Grid hero ratio is 0.603, so at zoom 1.5 the cover crop is 965x1600 px
-  // with its top edge at y=800/2400 (33%) — the "Baozi" sign is fully
-  // above the crop again; both faces stay in frame, woman's chin ~62%
-  // of the panel (cover y ~43%, clear of the title band).
-  // Kyoto vignette: panel H ratio is 1.10 (landscape), so the crop is the
-  // full 1600 px wide x 1455 px tall; anchor (0.65, 0.50) centres the
-  // couple under the umbrella (faces ~y 37-40% of the panel).
+  // genuinely Japan) as a vignette in the yatai panel (F, mid-right).
+  // Kyoto vignette, round-3 Red Team fix: the old anchor (0.65, 0.50) sat
+  // 0.08 too low (faces are at y ~0.42, not 0.50) and zoom 1.0 left the
+  // faces ~36-43 px tall in the 432 px panel — unreadable blobs. Face
+  // centres measured from a 10% grid overlay on the photo itself
+  // (1600x2400): man ~(0.60, 0.42), woman ~(0.70, 0.43), centroid
+  // (0.65, 0.42). Zoom 2.0 -> cover crop 800x727 px; faces render
+  // ~71-86 px tall in the panel, ~2x the old size. The vignette panel
+  // moved H -> F with the grid F/H swap (same rect, x 53-97 / y 35-67),
+  // so the crop math is unchanged and the couple stays above the title.
   const neon = await loadPhoto('samples/couple-neon.jpg');
   const kyoto = await loadPhoto('samples/couple-kyoto.jpg');
   const canvas = makeCanvas('4:5', false);
   const assignments = new Map([
     ['E', { photo: neon, zoom: 1.5, anchor: { x: 0.56, y: 0.75 } }],
-    ['H', { photo: kyoto, zoom: 1, anchor: { x: 0.65, y: 0.5 } }],
+    ['F', { photo: kyoto, zoom: 2.0, anchor: { x: 0.65, y: 0.42 } }],
   ]);
   await renderCover(canvas, {
     layout: 'grid',

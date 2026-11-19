@@ -81,21 +81,31 @@ export const LAYOUTS = {
       '4:5': {
         E: p(3, 2, 52, 67, 'hero', 1),
         B: p(53, 2, 97, 34, 'bike', 1.5),
-        H: p(53, 35, 97, 67, 'car', -1),
-        F: p(3, 68, 49, 97, 'yatai', -1.5),
+        // F/H SWAPPED (round-3 Red Team fix, 20 Nov): the yatai vendor is a
+        // FIGURE panel — it must not sit in the bottom row, where the title
+        // band (caps y 62.7-81.2%) decapitates it (only head + counter were
+        // visible). Yatai now sits mid-right, above the title band; the
+        // bottom row holds only figure-free panels (car demo + beach),
+        // which the title may overlap as in the Key Art layout.
+        F: p(53, 35, 97, 67, 'yatai', -1.5),
+        H: p(3, 68, 49, 97, 'car', -1),
         I: p(50, 68, 97, 97, 'beach', 0.5),
       },
       '1:1': {
         E: p(3, 2, 50, 67, 'hero', 1),
         B: p(51, 2, 97, 34, 'bike', 1.5),
-        H: p(51, 35, 97, 67, 'car', -1),
-        F: p(3, 68, 49, 97, 'yatai', -1.5),
+        // Same F/H swap as 4:5 (identical panel geometry).
+        F: p(51, 35, 97, 67, 'yatai', -1.5),
+        H: p(3, 68, 49, 97, 'car', -1),
         I: p(50, 68, 97, 97, 'beach', 0.5),
       },
       '16:9': {
         E: p(3, 2, 46, 97, 'hero', 1),
         B: p(47, 2, 97, 48, 'bike', 1.5),
         H: p(47, 49, 97, 82, 'car', -1),
+        // NOT swapped here: F already sits below the title band
+        // (y 83-97 vs band y 62-78), so the vendor is never decapitated;
+        // swapping would put the figure panel INTO the band.
         F: p(47, 83, 72, 97, 'yatai', -1.5),
         I: p(73, 83, 97, 97, 'beach', 0.5),
       },

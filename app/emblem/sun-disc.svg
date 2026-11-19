@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+<defs>
+  <radialGradient id="disc" cx="50%" cy="42%" r="65%">
+    <stop offset="0%" stop-color="#FFD9A0"/>
+    <stop offset="38%" stop-color="#FF9A5C"/>
+    <stop offset="68%" stop-color="#F0527A"/>
+    <stop offset="100%" stop-color="#7C3AED"/>
+  </radialGradient>
+  <linearGradient id="rayLong" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#FF8A3D"/>
+    <stop offset="100%" stop-color="#FFC08A"/>
+  </linearGradient>
+  <linearGradient id="rayShort" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#C93A8A"/>
+    <stop offset="100%" stop-color="#E93A8A"/>
+  </linearGradient>
+</defs>
+<!-- rays: 16 tapered, alternating long/short, radial symmetry (no V shape) -->
+<g id="rays">
+  <polygon points="96.43,36.10 98.14,3.02 101.86,3.02 103.57,36.10" fill="url(#rayLong)"/>
+  <polygon points="122.20,39.98 132.54,18.24 134.81,19.18 126.74,41.86" fill="url(#rayShort)"/>
+  <polygon points="142.66,52.29 167.26,30.11 169.89,32.74 147.71,57.34" fill="url(#rayLong)"/>
+  <polygon points="158.14,73.26 180.82,65.19 181.76,67.46 160.02,77.80" fill="url(#rayShort)"/>
+  <polygon points="163.90,96.43 196.98,98.14 196.98,101.86 163.90,103.57" fill="url(#rayLong)"/>
+  <polygon points="160.02,122.20 181.76,132.54 180.82,134.81 158.14,126.74" fill="url(#rayShort)"/>
+  <polygon points="147.71,142.66 169.89,167.26 167.26,169.89 142.66,147.71" fill="url(#rayLong)"/>
+  <polygon points="126.74,158.14 134.81,180.82 132.54,181.76 122.20,160.02" fill="url(#rayShort)"/>
+  <polygon points="103.57,163.90 101.86,196.98 98.14,196.98 96.43,163.90" fill="url(#rayLong)"/>
+  <polygon points="77.80,160.02 67.46,181.76 65.19,180.82 73.26,158.14" fill="url(#rayShort)"/>
+  <polygon points="57.34,147.71 32.74,169.89 30.11,167.26 52.29,142.66" fill="url(#rayLong)"/>
+  <polygon points="41.86,126.74 19.18,134.81 18.24,132.54 39.98,122.20" fill="url(#rayShort)"/>
+  <polygon points="36.10,103.57 3.02,101.86 3.02,98.14 36.10,96.43" fill="url(#rayLong)"/>
+  <polygon points="39.98,77.80 18.24,67.46 19.18,65.19 41.86,73.26" fill="url(#rayShort)"/>
+  <polygon points="52.29,57.34 30.11,32.74 32.74,30.11 57.34,52.29" fill="url(#rayLong)"/>
+  <polygon points="73.26,41.86 65.19,19.18 67.46,18.24 77.80,39.98" fill="url(#rayShort)"/>
+</g>
+<!-- disc -->
+<circle cx="100" cy="100" r="62.0" fill="url(#disc)"/>
+<circle cx="100" cy="100" r="52.0" fill="none" stroke="#0C0812" stroke-opacity="0.35" stroke-width="1.5"/>
+<!-- keyhole (kunci): circle + tapered stem, dark #0C0812 -->
+<circle cx="100" cy="88" r="14" fill="#0C0812"/>
+<polygon points="94.5,96 105.5,96 111,124 89,124" fill="#0C0812"/>
+<!-- top-left gloss arc -->
+<path d="M 62 74 A 52 52 0 0 1 100 48" fill="none" stroke="#FFFFFF" stroke-opacity="0.28" stroke-width="4" stroke-linecap="round"/>
+<!-- outer separation ring (dark, outside ray tips) + hairline -->
+<circle cx="100" cy="100" r="98.5" fill="none" stroke="#0C0812" stroke-opacity="0.85" stroke-width="2.5"/>
+<!-- outer hairline ring -->
+<circle cx="100" cy="100" r="97.5" fill="none" stroke="#FFC08A" stroke-opacity="0.55" stroke-width="1.2"/>
+</svg>

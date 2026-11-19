@@ -1,0 +1,213 @@
+/* VICE KEY — Sunset Key-Art Studio. Tokens first; no literal colours past this block. */
+@font-face {
+  font-family: "Anton";
+  src: url("fonts/Anton-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --bg: #14101c;
+  --surface: #1e1826;
+  --surface-muted: #2a2233;
+  --text: #f5efe4;
+  --muted: #b8adbe;
+  --border: #3d3247;
+  --accent: #ff9a5c;
+  --accent-ink: #1c0f08;
+  --focus: #ffc21a;
+  --radius: 10px;
+  --space: 16px;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: clip;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.app-header {
+  padding: var(--space) var(--space) 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.app-header h1 {
+  font-family: "Anton", system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 1.05;
+  letter-spacing: 0.01em;
+  margin: 0;
+  color: var(--text);
+}
+
+.tagline { color: var(--muted); margin: 4px 0 0; font-size: 15px; }
+
+.app-main {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space);
+  padding: var(--space);
+  align-items: flex-start;
+}
+
+.editor {
+  flex: 1 1 480px;
+  min-width: 0;
+}
+
+#preview {
+  display: block;
+  width: 100%;
+  max-width: 540px;
+  height: auto;
+  margin-inline: auto;
+  background: #0c0812;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  touch-action: none;
+}
+
+.hint { color: var(--muted); font-size: 14px; text-align: center; }
+
+.controls {
+  flex: 1 1 320px;
+  min-width: 280px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space);
+}
+
+.control-group {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--space);
+}
+
+.control-group h2 {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin: 0 0 10px;
+}
+
+.note { color: var(--muted); font-size: 13px; margin: 8px 0 0; }
+.status { color: var(--text); font-size: 14px; margin: 10px 0 0; min-height: 1.5em; }
+
+.file-label {
+  display: block;
+  padding: 10px 12px;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  text-align: center;
+}
+.file-label input { display: block; margin-top: 8px; width: 100%; }
+
+.sample-row { display: flex; gap: 8px; margin-top: 10px; }
+
+button {
+  font: inherit;
+  color: var(--text);
+  background: var(--surface-muted);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 8px 12px;
+  cursor: pointer;
+}
+button:hover { border-color: var(--accent); }
+button:disabled { opacity: 0.45; cursor: default; }
+button.primary {
+  background: var(--accent);
+  color: var(--accent-ink);
+  border-color: var(--accent);
+  font-weight: 700;
+}
+button.primary:hover { filter: brightness(1.08); }
+button.wide { width: 100%; margin-top: 8px; }
+
+.radio-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.radio-row button[aria-pressed="true"] {
+  background: var(--accent);
+  color: var(--accent-ink);
+  border-color: var(--accent);
+  font-weight: 700;
+}
+
+.export-row { display: flex; flex-wrap: wrap; gap: 8px; }
+
+#caption-input {
+  width: 100%;
+  font: inherit;
+  font-size: 16px;
+  color: var(--text);
+  background: var(--surface-muted);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 8px 10px;
+}
+
+.slider-label { display: flex; align-items: center; gap: 10px; margin-top: 8px; }
+.slider-label input { flex: 1; }
+#zoom-value { min-width: 52px; text-align: right; }
+
+.photo-strip { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.photo-strip figure {
+  margin: 0;
+  width: 76px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.photo-strip figure[aria-pressed="true"] { border-color: var(--accent); }
+.photo-strip img { display: block; width: 76px; height: 56px; object-fit: cover; }
+.photo-strip figcaption {
+  font-size: 11px;
+  color: var(--muted);
+  padding: 2px 4px;
+  background: var(--surface-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.app-footer {
+  border-top: 1px solid var(--border);
+  padding: var(--space);
+  color: var(--muted);
+  font-size: 13px;
+}
+
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+/* Shot mode: cover only, no UI chrome (used by ?shot=2/3/4 captures). */
+body.shot-mode { background: #0c0812; }
+body.shot-mode .app-header,
+body.shot-mode .controls,
+body.shot-mode .app-footer,
+body.shot-mode .hint { display: none; }
+body.shot-mode .app-main { padding: 0; }
+body.shot-mode .editor { flex: 1 1 auto; }
+body.shot-mode #preview { max-width: none; border: 0; border-radius: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+
+@media (max-width: 640px) {
+  .app-header h1 { font-size: 32px; }
+}

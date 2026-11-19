@@ -13,17 +13,25 @@ Font License), self-hosted under `app/`.
 
 ## Status
 
-Skeleton only — the app is built in a recorded session on the morning of
-20 Nov 2026; this commit holds the structure, the kit's unchanged
-`vendor/makefun-app.ts`, and an empty `app/` waiting for the build.
+Built 19–20 Nov 2026 in a recorded session. The app is complete: 4 layouts,
+4 OKLCH grades + Poster Ink, face-center auto-crop, 3 export sizes, 4
+screenshots. Validation (5 adversarial photos × 3 sizes, thumbnail
+readability, export timings) is in the build log
+`~/workspace/makefun/cover-art-concept/build-log.md`.
 
-## How it will work
+## How it works
 
-- Load your own photo(s) from your machine, crop and position each one
-  across the cover's panels, write and edit the caption.
-- One bold one-line title, "VICE KEY", across the middle band of the cover.
-- Export as PNG in the common post sizes: 1080 x 1080, 1080 x 1350,
-  1920 x 1080.
+- Load your own photo(s) from your machine (up to 6), or use the built-in
+  samples. Each photo is analysed locally (FaceDetector when available,
+  centre-weighted saliency fallback) and auto-cropped face-centre into its
+  panel; click a panel and drag the anchor to override the focus, zoom
+  0.8–2.0×.
+- One bold one-line title, "VICE KEY" (Anton, self-hosted, SIL OFL), 84%
+  width across the middle band of the cover, with a thick dark outline.
+- Layouts: Key Art hero (8 panels), 5-panel grid, single-scene portrait,
+  3-panel strip. Grades: Sunset (default, unifying), Neon Nights, Teal Heat,
+  Mono Ink — OKLCH grade + 5-tone posterize + Bayer halftone + Sobel edge ink.
+- Export as PNG in 1080 x 1350 (4:5), 1080 x 1080 (1:1), 1920 x 1080 (16:9).
 - Fully offline: every script, font, and image the app loads is a file
   under `app/` — no network request.
 
